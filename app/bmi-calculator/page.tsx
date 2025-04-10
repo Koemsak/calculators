@@ -203,7 +203,7 @@ const page = () => {
                 loading ? (
                   <Loader className="animate-spin" />
                 ) : (
-                  <span>Calculate BMI</span>
+                  <span className="text-white">Calculate BMI</span>
                 )
               }
             </Button>

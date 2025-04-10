@@ -23,6 +23,10 @@ import {
   Thermometer,
   Hourglass,
   Volume2,
+  Instagram,
+  Facebook,
+  Twitter,
+  Linkedin,
 } from "lucide-react";
 
 export const navItems = {
@@ -628,5 +632,82 @@ export const unitConvertors = [
       { label: "Cubic Foot", value: "cubic-foot", scale: "ft³" },
       { label: "Cubic Inch", value: "cubic-inch", scale: "in³" },
     ],
+  },
+];
+
+export const footerLinks = [
+  {
+    title: "Tools",
+    links: [
+      {
+        name: "Tip Calculator",
+        link: "/tip-calculator",
+      },
+      {
+        name: "Unit Converter",
+        link: "/unit-convertor",
+      },
+      {
+        name: "BMI Calculator",
+        link: "/bmi-calculator",
+      },
+      {
+        name: "Loan Calculator",
+        link: "/loan-calculator",
+      },
+    ],
+  },
+  {
+    title: "About Us",
+    links: [
+      {
+        name: "Our Mission",
+        link: "https://www.hoobank.com/help-center/",
+      },
+      {
+        name: "Contact Us",
+        link: "https://www.hoobank.com/partners/",
+      },
+      {
+        name: "FAQ",
+        link: "https://www.hoobank.com/suggestions/",
+      }
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      {
+        name: "Privacy Policy",
+        link: "https://www.hoobank.com/our-partner/",
+      },
+      {
+        name: "Terms of Use",
+        link: "https://www.hoobank.com/become-a-partner/",
+      },
+    ],
+  },
+];
+
+export const socialMedia = [
+  {
+    id: "social-media-1",
+    icon: <Instagram size={20} />,
+    link: "https://www.instagram.com/",
+  },
+  {
+    id: "social-media-2",
+    icon: <Facebook size={20} />,
+    link: "https://www.facebook.com/",
+  },
+  {
+    id: "social-media-3",
+    icon: <Twitter size={20} />,
+    link: "https://www.twitter.com/",
+  },
+  {
+    id: "social-media-4",
+    icon: <Linkedin size={20} />,
+    link: "https://www.linkedin.com/",
   },
 ];

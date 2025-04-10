@@ -23,9 +23,9 @@ const BMIChart: React.FC<BMIChartProps> = ({ bmi }: BMIChartProps) => {
           colors={["#3B82F6", "#10B981", "#FBBF24", "#F97316", "#EF4444"]}
           arcWidth={0.3}
           percent={bmiToGauge(bmi)}
-          textColor="#000000"
-          needleColor="#000000"
-          needleBaseColor="#000000"
+          textColor="#3B82F6"
+          needleColor="#EF4444"
+          needleBaseColor="#F97316"
           formatTextValue={() => `${bmi}`}
           arcsLength={[0.4625, 0.16, 0.1225, 0.1225, 0.125]}
           arcPadding={0.01}
