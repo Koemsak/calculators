@@ -7,6 +7,8 @@ import { Inter } from "next/font/google";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import NavBar from "@/components/nav-bar";
 import { ThemeProvider } from "next-themes";
+import Head from "next/head";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,6 +17,9 @@ export const metadata: Metadata = {
   description: "A collection of useful calculator tools",
   icons: {
     icon: "/favicon.ico",
+  },
+  other: {
+    "google-adsense-account": "ca-pub-9972955749211628",
   },
 };
 
@@ -25,7 +30,21 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Head>
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9972955749211628"
+          crossOrigin="anonymous"
+        ></script>
+        <meta name="google-adsense-account" content="ca-pub-9972955749211628" />
+      </Head>
       <body className={`${inter.className} m-0 p-0 flex flex-col h-screen`}>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9972955749211628"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
