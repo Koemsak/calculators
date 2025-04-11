@@ -145,7 +145,7 @@ const Page = () => {
   const totalAllAmountCountUp = getCountUpConfig(totalAllTipAmount);
 
   return (
-    <main className="flex max-h-screen flex-col items-center p-8 space-y-10">
+    <main className="flex min-h-screen flex-col items-center p-8 space-y-10">
       <div className="flex flex-col items-center justify-center h-full space-y-8 px-4 max-w-5xl w-full text-sm lg:flex lg:flex-col">
         <h1 className="text-lg font-bold tracking-tight lg:text-4xl md:text-3xl sm:text-2xl bg-gradient-to-r from-red-500 via-orange-500 to-amber-500 bg-clip-text text-transparent">
           Welcome to Tip Calculator Tool
