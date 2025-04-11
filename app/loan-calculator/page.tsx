@@ -2,9 +2,13 @@
 
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Label } from "@/components/ui/label";
+
+import { Columns, PaymentSchedules } from "@/components/columns";
+import { DataTable } from "@/components/data-table";
+
 import {
   Select,
   SelectContent,
@@ -35,7 +39,7 @@ interface PaymentSchedule {
   total_payment: number;
   ending_balance: number;
 }
-const page = () => {
+const Page = () => {
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
   const [loanAmount, setLoanAmount] = useState(100);
   const [displayAmount, setDisplayAmount] = useState("100.00");
@@ -50,13 +54,13 @@ const page = () => {
   const [totalPrincipal, setTotalPrincipal] = useState<number>(0);
   const [totalInterest, setTotalInterest] = useState<number>(0);
   const [totalAmount, setTotalAmount] = useState<number>(0);
-  const [paymentSchedule, setPaymentSchedule] = useState<PaymentSchedule[]>([]);
+  const [paymentSchedule, setPaymentSchedule] = useState<PaymentSchedules[]>([]);
 
   // Swap from select to manual input
   const [isSwapTerm, setIsSwapTerm] = useState(false);
   const [isSwapInterst, setIsSwapInterst] = useState(false);
 
-  const calculateLoan = () => {
+  const calculateLoan = useCallback(() => {
     const monthlyRate =
       selectedTerm === "years" ? interestRate / 100 / 12 : interestRate / 100;
     const numberOfPayments = selectedTerm === "years" ? term * 12 : term;
@@ -82,19 +86,19 @@ const page = () => {
 
       schedule.push({
         month: `${i}`,
-        beginning_balance: beginningBalance,
-        principal: principalForMonth,
-        interest: interestForMonth,
-        total_payment: monthlyPayment,
-        ending_balance: balance < 0 ? 0 : balance,
+        beginning_balance: parseFloat(formatNumber(beginningBalance)),
+        principal: parseFloat(formatNumber(principalForMonth)),
+        interest: parseFloat(formatNumber(interestForMonth)),
+        total_payment: parseFloat(formatNumber(monthlyPayment)),
+        ending_balance: balance < 0 ? 0 : parseFloat(formatNumber(balance)),
       });
     }
 
-    setTotalPrincipal(totalPrincipalPaid);
-    setTotalInterest(totalInterestPaid);
-    setTotalAmount(totalPrincipalPaid + totalInterestPaid);
+    setTotalPrincipal(parseFloat(formatNumber(totalPrincipalPaid)));
+    setTotalInterest(parseFloat(formatNumber(totalInterestPaid)));
+    setTotalAmount(parseFloat(formatNumber(totalPrincipalPaid + totalInterestPaid)));
     setPaymentSchedule(schedule);
-  };
+  }, [loanAmount, term, interestRate, selectedTerm]);
 
   const handleCurrencyChange = (value: string) => {
     setSelectedCurrency(value);
@@ -283,7 +287,7 @@ const page = () => {
 
   useEffect(() => {
     calculateLoan();
-  }, [loanAmount, term, interestRate]);
+  }, [calculateLoan]);
 
   const cardVariants = {
     hidden: {
@@ -307,7 +311,7 @@ const page = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-8 space-y-10">
+    <main className="flex max-h-screen flex-col items-center p-8 space-y-10">
       <div className="flex flex-col items-center justify-center h-full space-y-8 max-w-5xl w-full text-sm lg:flex lg:flex-col">
         <h1 className="text-lg font-bold tracking-tight lg:text-4xl md:text-3xl sm:text-2xl bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 bg-clip-text text-transparent">
           Welcome to Loan Calculator
@@ -322,8 +326,8 @@ const page = () => {
         <p className="opacity-50 text-[12px] lg:text-base">
           Whether you are looking to save for the future project or determine
           the amountof loan you can afford, these convenient calculators can
-          help you make sense of your budget. ​​​​​​Start by selecting one of
-          the calculators to ​help determine your savings or loan options.
+          help you make sense of your budget. Start by selecting one of
+          the calculators to help determine your savings or loan options.
         </p>
       </div>
 
@@ -544,7 +548,7 @@ const page = () => {
             </div>
           </div>
         </div>
-        <div className="space-y-4 shadow-md rounded-sm">
+        <div className="p-4 space-y-4 shadow-md rounded-sm">
           <RadialChart
             totalPrincipal={totalPrincipal}
             totalInterest={totalInterest}
@@ -558,10 +562,13 @@ const page = () => {
         <h1 className="text-xl font-bold lg:text-3xl md:text-2xl sm:text-xl text-start mb-2">
           Payment Schedules
         </h1>
-        <ListOfLoan paymentSchedule={paymentSchedule} />
+        {/* <ListOfLoan paymentSchedule={paymentSchedule} /> */}
+        
+        <DataTable columns={Columns} data={paymentSchedule} />
+
       </div>
     </main>
   );
 };
 
-export default page;
+export default Page;

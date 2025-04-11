@@ -18,8 +18,8 @@ const Hero = () => {
         </div>
         <p className={`opacity-50 text-[12px] lg:text-base mt-5`}>
           Simplify your life with our free, easy-to-use calculator tools!
-          Whether you're converting units, calculating your BMI, figuring out
-          the perfect tip, or planning a loan, we’ve got you covered. No
+          Whether you&apos;re converting units, calculating your BMI, figuring out
+          the perfect tip, or planning a loan, we&apos;ve got you covered. No
           sign-ups, no fees—just fast, accurate results at your fingertips.
           Explore our four powerful tools below and start solving everyday
           problems today!

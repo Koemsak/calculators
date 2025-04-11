@@ -1,19 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Freehand&display=swap');
-
-body {
-  font-family: "Inter", "Noto Sans Khmer", sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;700&display=swap');
 .chart-text, .breakdown-text {
-  font-family: "Inter", "Noto Sans Khmer", sans-serif;
+  font-family: "Inter", "Noto Sans Khmer", sans-serif !important;
 }
 
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 @media (prefers-color-scheme: dark) {

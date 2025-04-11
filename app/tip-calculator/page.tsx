@@ -7,10 +7,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { tips } from "@/constants";
 import { DollarSign, UserRound, UsersRound } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
 
-const page = () => {
+const Page = () => {
   const [billAmount, setBillAmount] = useState(10);
   const [strBillAmount, setStrBillAmount] = useState("10.00");
 
@@ -23,7 +23,7 @@ const page = () => {
   const [totalTipAmount, setTotalTipAmount] = useState(0.0);
   const [totalAllTipAmount, setTotalAllTipAmount] = useState(0.0);
 
-  const calculateTip = () => {
+  const calculateTip = useCallback(() => {
     setTimeout(() => {
       const tipAmount = (billAmount * tipPercent) / 100;
       const totalAmount = billAmount + tipAmount;
@@ -32,7 +32,7 @@ const page = () => {
       setTotalTipAmount(tipAmount);
       setTotalAllTipAmount(totalAmount);
     }, 500);
-  };
+  }, [billAmount, numberOfPeople, tipPercent]);
 
   // Start Bill Amount
   const handleBillAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -125,7 +125,7 @@ const page = () => {
 
   useEffect(() => {
     calculateTip();
-  }, [billAmount, tipPercent, numberOfPeople]);
+  }, [calculateTip]);
 
   const getCountUpConfig = (num: number) => {
     if (num >= 1_000_000_000) {
@@ -145,7 +145,7 @@ const page = () => {
   const totalAllAmountCountUp = getCountUpConfig(totalAllTipAmount);
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-8 space-y-10">
+    <main className="flex max-h-screen flex-col items-center p-8 space-y-10">
       <div className="flex flex-col items-center justify-center h-full space-y-8 px-4 max-w-5xl w-full text-sm lg:flex lg:flex-col">
         <h1 className="text-lg font-bold tracking-tight lg:text-4xl md:text-3xl sm:text-2xl bg-gradient-to-r from-red-500 via-orange-500 to-amber-500 bg-clip-text text-transparent">
           Welcome to Tip Calculator Tool
@@ -159,7 +159,7 @@ const page = () => {
         </h1>
         <p className="opacity-50 text-[12px] lg:text-base">
           Easily calculate the perfect tip for your restaurant bill! Whether
-          you're dining out or splitting the bill with friends, our Tip
+          you&apos;re dining out or splitting the bill with friends, our Tip
           Calculator helps you determine the right amount to tip based on your
           bill and desired percentage.
         </p>
@@ -339,4 +339,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

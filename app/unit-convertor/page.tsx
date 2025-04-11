@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 
 import { unitCalculator } from "@/utils/unit-calculator";
 
-const page = () => {
+const Page = () => {
   const [expression, setExpression] = useState("");
   const [expressionVal1, setExpressionVal1] = useState("");
   const [expressionVal2, setExpressionVal2] = useState("");
@@ -105,7 +105,7 @@ const page = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-8 space-y-10">
+    <main className="flex max-h-screen flex-col items-center p-8 space-y-10">
       <div className="flex flex-col items-center justify-center h-full space-y-8 px-4 max-w-5xl w-full text-sm lg:flex lg:flex-col">
         <h1 className="text-lg font-bold tracking-tight lg:text-4xl md:text-3xl sm:text-2xl bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-500 bg-clip-text text-transparent">
           Welcome to Unit Convertor Tool
@@ -287,4 +287,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

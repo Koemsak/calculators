@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/footer";
 import styles from "@/components/styles";
+import { Inter } from "next/font/google";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
 import NavBar from "@/components/nav-bar";
@@ -25,12 +25,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className={`${inter.className} m-0 p-0 flex flex-col h-screen`}>
         <ThemeProvider
           attribute="class"

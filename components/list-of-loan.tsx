@@ -28,44 +28,91 @@ const formatAmount = (num: Number) => {
   });
 };
 const ListOfLoan: React.FC<ScheduleTableProps> = ({ paymentSchedule }) => {
+  const total = paymentSchedule.reduce(
+    (acc, curr) => ({
+      beginning_balance: acc.beginning_balance + curr.beginning_balance,
+      principal: acc.principal + curr.principal,
+      interest: acc.interest + curr.interest,
+      total_payment: acc.total_payment + curr.total_payment,
+      ending_balance: acc.ending_balance + curr.ending_balance,
+    }),
+    {
+      beginning_balance: 0,
+      principal: 0,
+      interest: 0,
+      total_payment: 0,
+      ending_balance: 0,
+    }
+  );
+  const totalPayment = paymentSchedule.reduce(
+    (acc, curr) => acc + curr.total_payment,
+    0
+  );
+
   return (
-    <Table>
-      <TableHeader>
-        <TableRow className="hover:bg-transparant bg-teal-200">
-          <TableHead className="w-[100px] font-bold text-center">Month</TableHead>
-          <TableHead className="font-bold">Beginning Balance</TableHead>
-          <TableHead className="font-bold">Principle</TableHead>
-          <TableHead className="font-bold">Interest</TableHead>
-          <TableHead className="font-bold">Total Payment</TableHead>
-          <TableHead className="text-right font-bold">Ending Balance</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {paymentSchedule.map((sch, index) => (
-          <TableRow
-            key={index}
-            className={index % 2 === 0 ? "" : "bg-rose-100/25"}
-          >
-            <TableCell className="font-medium text-center">{sch.month}</TableCell>
-            <TableCell>{formatAmount(sch.beginning_balance)}</TableCell>
-            <TableCell>{formatAmount(sch.principal)}</TableCell>
-            <TableCell>{formatAmount(sch.interest)}</TableCell>
-            <TableCell>{formatAmount(sch.total_payment)}</TableCell>
-            <TableCell className="text-right">{formatAmount(sch.ending_balance)}</TableCell>
+    <div className="overflow-x-auto">
+      <Table>
+        <TableHeader>
+          <TableRow className="hover:bg-transparent bg-teal-200 sticky top-0 z-10">
+            <TableHead className="w-[80px] sm:w-[100px] font-bold text-center text-xs sm:text-sm">
+              Month
+            </TableHead>
+            <TableHead className="font-bold text-xs sm:text-sm min-w-[120px]">
+              Beginning Balance
+            </TableHead>
+            <TableHead className="font-bold text-xs sm:text-sm hidden sm:table-cell min-w-[100px]">
+              Principle
+            </TableHead>
+            <TableHead className="font-bold text-xs sm:text-sm hidden sm:table-cell min-w-[100px]">
+              Interest
+            </TableHead>
+            <TableHead className="font-bold text-xs sm:text-sm min-w-[120px]">
+              Total Payment
+            </TableHead>
+            <TableHead className="text-right font-bold text-xs sm:text-sm min-w-[120px]">
+              Ending Balance
+            </TableHead>
           </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell className="text-center">Total</TableCell>
-          <TableCell>$2,500.00</TableCell>
-          <TableCell>$2,500.00</TableCell>
-          <TableCell>$2,500.00</TableCell>
-          <TableCell>$2,500.00</TableCell>
-          <TableCell className="text-right">$2,500.00</TableCell>
-        </TableRow>
-      </TableFooter>
-    </Table>
+        </TableHeader>
+        <TableBody>
+          {paymentSchedule.map((sch, index) => (
+            <TableRow
+              key={index}
+              className={index % 2 === 0 ? "" : "bg-rose-100/25"}
+            >
+              <TableCell className="font-medium text-center text-xs sm:text-sm">
+                {sch.month}
+              </TableCell>
+              <TableCell className="text-xs sm:text-sm">
+                {formatAmount(sch.beginning_balance)}
+              </TableCell>
+              <TableCell className="text-xs sm:text-sm hidden sm:table-cell">
+                {formatAmount(sch.principal)}
+              </TableCell>
+              <TableCell className="text-xs sm:text-sm hidden sm:table-cell">
+                {formatAmount(sch.interest)}
+              </TableCell>
+              <TableCell className="text-xs sm:text-sm">
+                {formatAmount(sch.total_payment)}
+              </TableCell>
+              <TableCell className="text-right text-xs sm:text-sm">
+                {formatAmount(sch.ending_balance)}
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TableCell className="text-start text-xs sm:text-sm" colSpan={2}>
+              Total of paid payment:
+            </TableCell>
+            <TableCell className="text-end text-xs sm:text-sm" colSpan={4}>
+              {formatAmount(totalPayment)}
+            </TableCell>
+          </TableRow>
+        </TableFooter>
+      </Table>
+    </div>
   );
 };
 

@@ -14,9 +14,9 @@ export default function Home() {
           Our Features
         </h1>
         <p className="opacity-50 text-[12px] lg:text-base">
-          Pick a tool and try it out! Whether it’s converting units, checking
-          your BMI, calculating a tip, or planning a loan, we’re here to make
-          your day easier. Have feedback or a tool idea? Let us know—we’re
+          Pick a tool and try it out! Whether it&apos;s converting units, checking
+          your BMI, calculating a tip, or planning a loan, we&apos;re here to make
+          your day easier. Have feedback or a tool idea? Let us know—we&apos;re
           always improving!
         </p>
         <Separator className="my-2" />
@@ -36,7 +36,7 @@ export default function Home() {
           </h2>
           <p className={`m-0 text-sm opacity-50`}>
             Easily calculate the perfect tip for your restaurant bill! Whether
-            you're dining out or splitting the bill with friends, our Tip
+            you&apos;re dining out or splitting the bill with friends, our Tip
             Calculator helps you determine the right amount to tip based on your
             bill and desired percentage.
           </p>
@@ -74,7 +74,7 @@ export default function Home() {
           </h2>
           <p className={`m-0 text-sm opacity-50`}>
             Curious about your Body Mass Index (BMI)? Use our BMI Calculator to
-            find out! Just enter your height and weight, and we’ll calculate
+            find out! Just enter your height and weight, and we&apos;ll calculate
             your BMI instantly. Learn more about what your BMI means for your
             health.
           </p>
@@ -120,7 +120,7 @@ export default function Home() {
           </li>
           <li>
             <strong>Updated for 2025:</strong> Fresh, modern tools tailored to
-            today’s needs.
+            today&apos;s needs.
           </li>
         </ul>
       </div>

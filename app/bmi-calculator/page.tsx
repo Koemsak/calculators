@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { getBmiAdvice } from "@/constants/get-bmi-advice";
 import { Loader } from "lucide-react";
 
-const page = () => {
+const Page = () => {
   const [age, setAge] = useState(0);
   const [gender, setGender] = useState<"Male" | "Female">("Male");
   const [height, setHeight] = useState(0);
@@ -102,7 +102,7 @@ const page = () => {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-8 space-y-10">
+    <main className="flex max-h-screen flex-col items-center p-8 space-y-10">
       <div className="flex flex-col items-center justify-center h-full space-y-8 max-w-5xl w-full text-sm lg:flex lg:flex-col">
         <h1 className="text-lg font-bold tracking-tight lg:text-4xl md:text-3xl sm:text-2xl bg-gradient-to-r from-fuchsia-500 via-pink-500 to-rose-500 bg-clip-text text-transparent">
           Welcome to BMI Calculator
@@ -118,7 +118,7 @@ const page = () => {
         </h1>
         <p className="opacity-50 text-[12px] lg:text-base">
           Curious about your Body Mass Index (BMI)? Use our BMI Calculator to
-          find out! Just enter your height and weight, and we’ll calculate your
+          find out! Just enter your height and weight, and we&apos;ll calculate your
           BMI instantly. Learn more about what your BMI means for your health.
         </p>
       </div>
@@ -231,4 +231,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

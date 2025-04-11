@@ -17,8 +17,8 @@ const Footer = () => (
         />
         <p className={`${styles.paragraph} mt-2 max-w-[312px] text-gray-500`}>
           Simplify your life with our free, easy-to-use calculator tools!
-          Whether you're converting units, calculating your BMI, figuring out
-          the perfect tip, or planning a loan, we’ve got you covered.
+          Whether you&apos;re converting units, calculating your BMI, figuring out
+          the perfect tip, or planning a loan, we&apos;ve got you covered.
         </p>
       </div>
 
