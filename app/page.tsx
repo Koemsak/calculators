@@ -1,3 +1,4 @@
+import AdSenseAd from "@/components/AdSenseAd";
 import Hero from "@/components/hero";
 import { Separator } from "@/components/ui/separator";
 import { CircleDollarSign, Diameter, PackageOpen, Radius } from "lucide-react";
@@ -6,7 +7,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-8 space-y-10">
-      
+      <AdSenseAd />
       <Hero />
 
       <div className="flex flex-col h-full space-y-8 max-w-5xl w-full text-sm lg:flex lg:flex-col">
